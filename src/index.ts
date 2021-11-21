@@ -1,5 +1,7 @@
 import {App} from '@app/App'
 
-document.addEventListener('DOMContentLoaded', () => {
+try {
   new App()
-})
+} catch (error) {
+  console.log(error)
+}

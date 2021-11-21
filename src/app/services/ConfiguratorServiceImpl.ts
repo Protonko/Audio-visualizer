@@ -1,5 +1,7 @@
-import type {ConfiguratorService} from '@app/services/interfaces/ConfiguratorService'
+import type {ConfiguratorService} from '@services/interfaces/ConfiguratorService'
+import {injectable} from 'inversify'
 
+@injectable()
 export class ConfiguratorServiceImpl implements ConfiguratorService {
   private readonly _canvas: HTMLCanvasElement
   private readonly _canvasContext: CanvasRenderingContext2D | null

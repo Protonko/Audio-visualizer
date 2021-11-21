@@ -18,6 +18,9 @@ module.exports = {
     alias: {
       '@app': path.resolve(__dirname, '/app/'),
       '@assets': path.resolve(__dirname, '/assets/'),
+      '@components': path.resolve(__dirname, '/app/components'),
+      '@config': path.resolve(__dirname, '/app/config'),
+      '@services': path.resolve(__dirname, '/app/services'),
     },
   },
   devtool: 'source-map',

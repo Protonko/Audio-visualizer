@@ -20,7 +20,10 @@
     "baseUrl": "./src",
     "paths": {
       "@app/*": ["app/*"],
-      "@assets/*": ["assets/*"]
+      "@assets/*": ["assets/*"],
+      "@config/*": ["app/config/*"],
+      "@components/*": ["app/components/*"],
+      "@services/*": ["app/services/*"]
     }
   },
   "include": ["src/**/*"],
