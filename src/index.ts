@@ -1,3 +1,4 @@
+import '@assets/style/style.css'
 import {App} from '@app/App'
 
 try {

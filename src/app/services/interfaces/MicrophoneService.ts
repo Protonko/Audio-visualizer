@@ -1,5 +1,6 @@
 export interface MicrophoneService {
   initialized: boolean
-  samples: Uint8Array | null
+  samples: number[] | null
   volume: number | null
+  fftSize: number
 }

@@ -7,7 +7,6 @@ import {Bar} from '@components/Bar'
 
 @injectable()
 export class BarsServiceImpl implements BarsService {
-  private _MAX_HEXADECIMAL_VALUE = 0xFF
   private _bars: Bar[]
 
   constructor(
@@ -26,24 +25,33 @@ export class BarsServiceImpl implements BarsService {
   }
 
   private createBars() {
-    const barWidth = this._configuratorService.width / this._MAX_HEXADECIMAL_VALUE
-
-    for (let i = 0; i <= this._MAX_HEXADECIMAL_VALUE; i++) {
-      this._bars.push(new Bar(i * barWidth, this._configuratorService.height / 2, 1, 100, BarsServiceImpl.generateHslColor(i * 2)))
+    for (let i = 0; i < (this._microphoneService.fftSize / 2); i++) {
+      this._bars.push(new Bar(
+        0,
+        i * 1.5,
+        10,
+        50,
+        BarsServiceImpl.generateHslColor(i * 2),
+        i,
+      ))
     }
   }
 
   drawBars() {
     const {canvasContext} = this._configuratorService
-    const {samples} = this._microphoneService
+    const {samples, volume} = this._microphoneService
 
-    if (canvasContext && samples) {
+    if (!canvasContext) {
+      console.error('Canvas context is null!')
+    } else if (!samples) {
+      console.error('Samples are null!')
+    } else if (!volume) {
+      console.error('Volume is null!')
+    } else {
       this._bars.forEach((bar, index) => {
         bar.update(samples[index])
-        bar.draw(canvasContext)
+        bar.draw(canvasContext, volume)
       })
-    } else {
-      console.error('Canvas context is null!')
     }
   }
 }
