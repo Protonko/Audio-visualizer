@@ -7,7 +7,7 @@ export class MicrophoneServiceImpl implements MicrophoneService {
   private _audioContext?: AudioContext
   private _microphone?: MediaStreamAudioSourceNode
   private _analyser?: AnalyserNode
-  private _fftSize: number
+  private readonly _fftSize: number
   private _ui8a?: Uint8Array
 
   constructor() {

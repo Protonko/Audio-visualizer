@@ -22,4 +22,3 @@ container
 container
   .bind<BarsService>(SERVICE_IDENTIFIER.BARS_SERVICE)
   .to(BarsServiceImpl)
-
